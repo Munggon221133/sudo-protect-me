@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Signup.css'
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+const API_BASE = "https://5000-firebase-sudo-protect-megit-1762913679384.cluster-bg6uurscprhn6xwtrhvkf6.cloudworkstations.dev";
 
 export default function Signup() {
     const [form, setForm] = useState({
@@ -37,10 +37,10 @@ export default function Signup() {
 
         try {
             setLoading(true);
-            const res = await fetch(`${API_BASE}/api/signup`, {
+            const res = await fetch('/api/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form)
+                body: JSON.stringify(form),
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data?.message || 'Signup failed');
