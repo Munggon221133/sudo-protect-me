@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import '../styles/Signup.css'
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
@@ -53,26 +55,26 @@ export default function Signup() {
     };
 
     return (
-        <div className="login-wrapper">
-            <form className="login-form" onSubmit={onSubmit}>
+        <div className="signup-wrapper">
+            <form className="signup-form" onSubmit={onSubmit}>
                 <h1>Sign Up</h1>
 
                 <input
-                    className="login-input"
+                    className="signup-input"
                     name="firstName"
                     placeholder="First Name"
                     value={form.firstName}
                     onChange={onChange}
                 />
                 <input
-                    className="login-input"
+                    className="signup-input"
                     name="lastName"
                     placeholder="Last Name"
                     value={form.lastName}
                     onChange={onChange}
                 />
                 <input
-                    className="login-input"
+                    className="signup-input"
                     name="email"
                     placeholder="Email"
                     type="email"
@@ -80,7 +82,7 @@ export default function Signup() {
                     onChange={onChange}
                 />
                 <input
-                    className="login-input"
+                    className="signup-input"
                     name="password"
                     placeholder="Password"
                     type="password"
@@ -88,7 +90,7 @@ export default function Signup() {
                     onChange={onChange}
                 />
                 <input
-                    className="login-input"
+                    className="signup-input"
                     name="confirmPassword"
                     placeholder="Confirm Password"
                     type="password"
@@ -96,12 +98,17 @@ export default function Signup() {
                     onChange={onChange}
                 />
 
-                <button className="login-btn" type="submit" disabled={loading}>
+                <button className="signup-btn" type="submit" disabled={loading}>
                     {loading ? 'Creating…' : 'Create account'}
                 </button>
 
-                {err && <p style={{ color: '#f87171', marginTop: 4 }}>{err}</p>}
-                {msg && <p style={{ color: '#22c55e', marginTop: 4 }}>{msg}</p>}
+                {err && <p style={{ color: '#f87171' }}>{err}</p>}
+                {msg && <p style={{ color: '#22c55e' }}>{msg}</p>}
+
+                <p className="signup-text">
+                    Already have an account?{" "}
+                    <Link to="/login" className="signup-link">Login</Link>
+                </p>
             </form>
         </div>
     );

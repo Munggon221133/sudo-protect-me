@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { setToken } from '../lib/storage'
 import { useState } from 'react'
 import '../styles/Login.css'
@@ -41,6 +41,10 @@ export default function Login() {
                 <button type="submit" className="login-btn">
                     Sign in
                 </button>
+
+                <p className="login-text">
+                    Don’t have an account? <Link to="/signup" className="login-link">Sign up</Link>
+                </p>
             </form>
         </div>
     )
