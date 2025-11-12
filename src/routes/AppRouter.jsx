@@ -16,7 +16,7 @@ export default function AppRouter() {
                     <Route path="/Signup" element={<Signup />} />
                     <Route element={<MainLayout />}>
                         <Route
-                            path="/"
+                            path="/Home"
                             element={
                                 <ProtectedRoute>
                                     <Home />

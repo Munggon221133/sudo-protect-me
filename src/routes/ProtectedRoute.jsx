@@ -4,6 +4,6 @@ import { useAuth } from '../hooks/useAuth'
 export default function ProtectedRoute({ children }) {
     const { isAuthed } = useAuth()
     const location = useLocation()
-    if (!isAuthed) return <Navigate to="/login" replace state={{ from: location }} />
+    if (!isAuthed) return <Navigate to="/" replace state={{ from: location }} />
     return children
 }

@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/Signup.css'
-
-const API_BASE = "https://5000-firebase-sudo-protect-megit-1762913679384.cluster-bg6uurscprhn6xwtrhvkf6.cloudworkstations.dev";
 
 export default function Signup() {
     const [form, setForm] = useState({
@@ -11,6 +9,7 @@ export default function Signup() {
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState(null);
     const [err, setErr] = useState(null);
+    const navigate = useNavigate();
 
     const onChange = (e) => {
         const { name, value } = e.target;
@@ -45,8 +44,7 @@ export default function Signup() {
             const data = await res.json();
             if (!res.ok) throw new Error(data?.message || 'Signup failed');
 
-            setMsg('Account created! You can log in now.');
-            setForm({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' });
+            navigate('/', { state: { signupSuccess: true } });
         } catch (e) {
             setErr(e.message);
         } finally {
