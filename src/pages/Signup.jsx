@@ -107,7 +107,7 @@ export default function Signup() {
 
                 <p className="signup-text">
                     Already have an account?{" "}
-                    <Link to="/login" className="signup-link">Login</Link>
+                    <Link to="/" className="signup-link">Login</Link>
                 </p>
             </form>
         </div>

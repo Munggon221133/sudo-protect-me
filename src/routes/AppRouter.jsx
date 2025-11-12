@@ -12,7 +12,7 @@ export default function AppRouter() {
         <Router>
             <Suspense fallback={<div className="container">Loading…</div>}>
                 <Routes>
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<Login />} />
                     <Route path="/Signup" element={<Signup />} />
                     <Route element={<MainLayout />}>
                         <Route
