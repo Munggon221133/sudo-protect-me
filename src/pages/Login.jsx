@@ -119,12 +119,9 @@ export default function Login() {
                         <Link to="/signup" className="login-footer-link">
                             Don’t have an account?
                         </Link>
-                        <button
-                            type="button"
-                            className="login-footer-link login-footer-link-button"
-                        >
+                        <Link to="/reset-password" className="login-footer-link">
                             Forgot password?
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

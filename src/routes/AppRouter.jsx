@@ -5,6 +5,7 @@ import MainLayout from '../components/layout/MainLayout'
 
 const Login = lazy(() => import('../pages/Login.jsx'))
 const Signup = lazy(() => import('../pages/Signup.jsx'))
+const ResetPassword = lazy(() => import('../pages/ResetPassword.jsx'))
 const Home = lazy(() => import('../pages/Home.jsx'))
 
 export default function AppRouter() {
@@ -13,10 +14,11 @@ export default function AppRouter() {
             <Suspense fallback={<div className="container">Loading…</div>}>
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="/Signup" element={<Signup />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
                     <Route element={<MainLayout />}>
                         <Route
-                            path="/Home"
+                            path="/home"
                             element={
                                 <ProtectedRoute>
                                     <Home />

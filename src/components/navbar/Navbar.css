@@ -1,0 +1,98 @@
+/* ================= NAVBAR ================= */
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    height: 42px;
+    cursor: pointer;
+}
+
+/* CENTER LINKS */
+.nav-center {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #454545;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    color: #e60023;
+}
+
+.nav-link.active {
+    color: #e60023;
+    font-weight: 600;
+    padding-bottom: 2px;
+}
+
+/* RIGHT SECTION */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-user {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.logout-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #444;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    color: #e60023;
+}
+
+.user-circle {
+    width: 36px;
+    height: 36px;
+    background: #111827;
+    color: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-wrapper {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 20px;
+    }
+
+    .nav-center {
+        gap: 24px;
+    }
+}
