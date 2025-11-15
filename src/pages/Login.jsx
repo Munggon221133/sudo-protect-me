@@ -1,7 +1,10 @@
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { setToken } from '../lib/storage'
 import { useState, useEffect } from 'react'
+import trueLogo from '../assets/true_logo.png'
 import '../styles/Login.css'
+
+const API_BASE = import.meta.env.VITE_API_URL || ''
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -21,6 +24,8 @@ export default function Login() {
 
     const onSubmit = async (e) => {
         e.preventDefault()
+        if (loading) return
+
         setErr(null)
         setMsg(null)
 
@@ -31,55 +36,98 @@ export default function Login() {
 
         try {
             setLoading(true)
-            const res = await fetch(`/api/login`, {
+
+            const res = await fetch(`${API_BASE}/api/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({
+                    email: email.trim(),
+                    password,
+                }),
             })
-            const data = await res.json()
-            if (!res.ok) throw new Error(data?.message || 'Login failed')
 
+            const data = await res.json()
+            if (!res.ok) {
+                throw new Error(data?.message || 'Login failed')
+            }
+
+            // You can replace this with the real token from `data`
             setToken('demo-token')
             navigate('/Home', { replace: true })
-
         } catch (e) {
-            setErr(e.message)
+            setErr(e.message || 'Something went wrong')
         } finally {
             setLoading(false)
         }
     }
 
     return (
-        <div className="login-wrapper">
-            <form onSubmit={onSubmit} className="login-form">
-                <h1>Login</h1>
+        <div className="login-page">
+            <div className="login-container">
+                <img src={trueLogo} alt="true" className="login-logo" />
 
-                <input
-                    className="login-input"
-                    placeholder="Email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                />
+                <div className="login-card">
+                    {err && (
+                        <div className="login-alert login-alert-error">
+                            {err}
+                        </div>
+                    )}
+                    {msg && (
+                        <div className="login-alert login-alert-success">
+                            {msg}
+                        </div>
+                    )}
 
-                <input
-                    className="login-input"
-                    placeholder="Password"
-                    type="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                />
+                    <form onSubmit={onSubmit} className="login-form" noValidate>
+                        <label className="login-label">
+                            Username or Email
+                            <input
+                                className="login-input"
+                                placeholder="Enter Username or Email"
+                                type="email"
+                                name="email"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                autoComplete="email"
+                            />
+                        </label>
 
-                <button type="submit" className="login-btn" disabled={loading}>
-                    {loading ? 'Signing in…' : 'Sign in'}
-                </button>
+                        <label className="login-label">
+                            Password
+                            <input
+                                className="login-input"
+                                placeholder="Enter Password"
+                                type="password"
+                                name="password"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                                autoComplete="current-password"
+                            />
+                        </label>
 
-                {err && <p style={{ color: '#f87171' }}>{err}</p>}
-                {msg && <p style={{ color: '#22c55e' }}>{msg}</p>}
+                        <button
+                            type="submit"
+                            className="login-btn"
+                            disabled={loading}
+                            aria-busy={loading}
+                        >
+                            {loading ? 'Signing in…' : 'Sign In'}
+                        </button>
+                    </form>
 
-                <p className="login-text">
-                    Don’t have an account? <Link to="/signup" className="login-link">Sign up</Link>
-                </p>
-            </form>
+                    <div className="login-footer">
+                        <Link to="/signup" className="login-footer-link">
+                            Don’t have an account?
+                        </Link>
+                        <button
+                            type="button"
+                            className="login-footer-link login-footer-link-button"
+                        >
+                            Forgot password?
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
