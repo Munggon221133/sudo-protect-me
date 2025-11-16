@@ -287,6 +287,7 @@
     font-size: 0.85rem;
     resize: vertical;
     min-height: 80px;
+    color: #111827;
 }
 
 .report-textarea:focus {
