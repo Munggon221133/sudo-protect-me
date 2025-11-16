@@ -1,5 +1,5 @@
-import Navbar from "../components/navbar/Navbar"
-import "../styles/Dashboard.css"
+import Navbar from '../components/navbar/Navbar'
+import '../styles/Dashboard.css'
 
 const devices = [
     { name: "iPad-Kid", mac: "3C:15:C2:A9:42:B1", status: "Online", type: "Tablet" },

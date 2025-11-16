@@ -8,6 +8,8 @@ const Signup = lazy(() => import('../pages/Signup.jsx'))
 const ResetPassword = lazy(() => import('../pages/ResetPassword.jsx'))
 const Home = lazy(() => import('../pages/Home.jsx'))
 const Dashboard = lazy(() => import('../pages/Dashboard.jsx'))
+const Report = lazy(() => import('../pages/Report.jsx'))
+
 
 export default function AppRouter() {
     return (
@@ -31,6 +33,14 @@ export default function AppRouter() {
                             element={
                                 <ProtectedRoute>
                                     <Dashboard />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/report"
+                            element={
+                                <ProtectedRoute>
+                                    <Report />
                                 </ProtectedRoute>
                             }
                         />
