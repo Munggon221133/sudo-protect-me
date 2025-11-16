@@ -1,5 +1,5 @@
 import { useNavigate, useLocation, Link } from 'react-router-dom'
-import { setToken } from '../lib/storage'
+import { setUser, setToken } from '../lib/storage'
 import { useState, useEffect } from 'react'
 import trueLogo from '../assets/true_logo.png'
 import '../styles/Login.css'
@@ -51,8 +51,10 @@ export default function Login() {
                 throw new Error(data?.message || 'Login failed')
             }
 
-            // You can replace this with the real token from `data`
-            setToken('demo-token')
+            if (data.user) {
+                setUser(data.user)
+            }
+            setToken(data.token || 'demo-token')
             navigate('/Home', { replace: true })
         } catch (e) {
             setErr(e.message || 'Something went wrong')

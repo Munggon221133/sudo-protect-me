@@ -19,7 +19,7 @@
     gap: 16px;
 }
 
-/* LEFT: logo + brand */
+/* LEFT: logo */
 
 .nav-left {
     display: flex;
@@ -113,6 +113,12 @@
     justify-content: center;
     font-weight: 600;
     font-size: 0.9rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.user-circle:hover {
+    background: #b91c1c;
+    transform: translateY(-1px);
 }
 
 /* Dropdown menu */
@@ -198,6 +204,16 @@
     transform: translateY(-2px) rotate(-40deg);
 }
 
+.user-menu-divider {
+    height: 1px;
+    margin: 4px 4px;
+    background: #e5e7eb;
+}
+
+.user-menu-item--admin {
+    font-weight: 500;
+}
+
 /* ======= RESPONSIVE ======= */
 
 @media (max-width: 960px) {
@@ -205,13 +221,12 @@
         padding: 10px 16px;
     }
 
-    /* nav links become dropdown below bar */
     .nav-center {
         position: absolute;
         left: 0;
         right: 0;
         top: 56px;
-        /* approx height of bar */
+        /* approx bar height */
         background: #ffffff;
         border-bottom: 1px solid rgba(226, 232, 240, 0.9);
         padding: 10px 20px 12px;

@@ -12,6 +12,7 @@ export default function Signup() {
         email: '',
         password: '',
         confirmPassword: '',
+        role: 'user',
     })
     const [loading, setLoading] = useState(false)
     const [msg, setMsg] = useState(null)
@@ -31,7 +32,7 @@ export default function Signup() {
         setMsg(null)
 
         if (!form.firstName || !form.lastName || !form.email ||
-            !form.password || !form.confirmPassword) {
+            !form.password || !form.confirmPassword || !form.role) {
             setErr('Please fill all fields')
             return
         }
@@ -121,6 +122,22 @@ export default function Signup() {
                                 onChange={onChange}
                                 autoComplete="email"
                             />
+                        </label>
+
+                        <label className="signup-label">
+                            Role
+                            <div className="signup-select-box">
+                                <select
+                                    className="signup-select"
+                                    name="role"
+                                    value={form.role}
+                                    onChange={onChange}
+                                >
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                    <option value="guest">Guest</option>
+                                </select>
+                            </div>
                         </label>
 
                         <label className="signup-label">

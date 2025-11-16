@@ -109,6 +109,63 @@
     box-shadow: 0 0 0 0.7px #000000;
 }
 
+/* role dropdown */
+.signup-select-box {
+    position: relative;
+}
+
+.signup-select-box::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #6b7280;
+    pointer-events: none;
+    transition: border-top-color 0.18s ease;
+}
+
+.signup-select-box:has(.signup-select:focus)::after {
+    border-top-color: #000000;
+}
+
+.signup-select {
+    width: 100%;
+    padding: 10px 36px 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    color: #111827;
+    font-size: 0.9rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.signup-select:focus {
+    outline: none;
+    border-color: #000000;
+    background: #ffffff;
+    box-shadow: 0 0 0 0.7px #000000;
+}
+
+.signup-select:hover {
+    border-color: #9ca3af;
+}
+
+.signup-select option {
+    padding: 10px;
+    background: #ffffff;
+    color: #111827;
+}
+
 /* Button – matches login button theme */
 .signup-btn {
     margin-top: 4px;
