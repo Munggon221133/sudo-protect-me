@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://sudo-protect-me-backend-n01gisuif-munggon221133s-projects.vercel.app',
         changeOrigin: true,
       },
     },
