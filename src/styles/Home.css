@@ -23,7 +23,6 @@
         #f5f5f7;
 }
 
-
 .banner-content {
     position: relative;
     z-index: 10;
@@ -66,7 +65,7 @@
 
 .home-modes {
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 0 auto 32px;
     padding: 24px 20px 8px;
 }
 
@@ -108,6 +107,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
+    align-items: stretch;
 }
 
 /* Card base */
@@ -123,6 +123,7 @@
     overflow: hidden;
     transition: transform 0.22s ease, box-shadow 0.22s ease,
         border-color 0.22s ease, background 0.22s ease;
+    height: 100%;
 }
 
 .mode-card::before {
@@ -167,6 +168,7 @@
     grid-template-columns: auto 1fr;
     align-items: flex-start;
     gap: 14px;
+    flex: 1;
 }
 
 /* Icon circle */
@@ -242,7 +244,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-top: 12px;
+    margin-top: auto;
     padding-top: 8px;
     border-top: 1px dashed rgba(209, 213, 219, 0.8);
     font-size: 0.78rem;
@@ -313,6 +315,171 @@ input:checked+.slider::before {
     transform: translateX(20px);
 }
 
+/* ================= SCHEDULE CARD (inside grid) ================= */
+
+.schedule-card {
+    grid-column: 1 / -1;
+    /* span full width of grid */
+    margin-top: 4px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid rgba(229, 231, 235, 0.9);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+    padding: 18px 20px 16px;
+}
+
+.schedule-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.schedule-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.schedule-subtitle {
+    font-size: 0.86rem;
+    color: #6b7280;
+}
+
+/* Rows */
+
+.schedule-rows {
+    margin-top: 4px;
+}
+
+.schedule-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.schedule-row:first-of-type {
+    border-top: none;
+}
+
+.schedule-label {
+    width: 130px;
+    font-size: 0.9rem;
+    color: #111827;
+}
+
+/* Track + sliders */
+
+.schedule-track-wrap {
+    flex: 1;
+    position: relative;
+    padding-top: 10px;
+}
+
+.schedule-range {
+    position: relative;
+    height: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.schedule-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 4px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    transform: translateY(-50%);
+}
+
+/* Time labels */
+
+.schedule-time {
+    position: absolute;
+    top: -10px;
+    font-size: 0.72rem;
+    color: #6b7280;
+}
+
+.schedule-time--start {
+    left: 0;
+}
+
+.schedule-time--end {
+    right: 0;
+    text-align: right;
+}
+
+/* Range inputs */
+
+.schedule-range-input {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* hide default track */
+.schedule-range-input::-webkit-slider-runnable-track {
+    height: 4px;
+    background: transparent;
+}
+
+.schedule-range-input::-moz-range-track {
+    height: 4px;
+    background: transparent;
+}
+
+/* thumbs base */
+
+.schedule-range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.8);
+    margin-top: -5px;
+    cursor: pointer;
+}
+
+.schedule-range-input::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.8);
+    cursor: pointer;
+}
+
+/* Different colors per mode */
+
+.schedule-range-input--edu::-webkit-slider-thumb,
+.schedule-range-input--edu::-moz-range-thumb {
+    background: #d1001f;
+}
+
+.schedule-range-input--game::-webkit-slider-thumb,
+.schedule-range-input--game::-moz-range-thumb {
+    background: #d1001f;
+}
+
+.schedule-range-input--normal::-webkit-slider-thumb,
+.schedule-range-input--normal::-moz-range-thumb {
+    background: #111827;
+}
+
+.schedule-range-input--start {
+    z-index: 2;
+}
+
 /* Mobile / tablet */
 @media (max-width: 960px) {
     .mode-grid {
@@ -337,6 +504,23 @@ input:checked+.slider::before {
     .mode-main .switch {
         justify-self: flex-end;
         align-self: start;
+    }
+
+    .schedule-card {
+        grid-column: 1 / -1;
+    }
+
+    .schedule-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .schedule-label {
+        width: auto;
+    }
+
+    .schedule-track-wrap {
+        width: 100%;
     }
 }
 
