@@ -342,6 +342,11 @@
     font-weight: 500;
 }
 
+.report-table td,
+.report-table th {
+    color: #111827 !important;
+}
+
 .report-table tbody tr:nth-child(odd) {
     background: #f9fafb;
 }

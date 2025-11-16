@@ -112,7 +112,7 @@ export default function Navbar() {
                                 <button
                                     type="button"
                                     className="user-menu-item"
-                                // onClick={() => { navigate("/profile"); closeMenus(); }}
+                                    onClick={() => { navigate("/profile"); closeMenus(); }}
                                 >
                                     Profile
                                 </button>
