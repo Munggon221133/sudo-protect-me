@@ -274,12 +274,12 @@ export default function Dashboard() {
                             <table className="simple-table simple-table--events">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Time</th>
                                         <th>Device</th>
                                         <th>MAC</th>
                                         <th>Details</th>
                                         <th>Risk</th>
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -337,26 +337,97 @@ export default function Dashboard() {
                             </p>
                         </div>
                         <div className="traffic-totals">
-                            <div>
-                                <span className="traffic-label">Total Received</span>
-                                <span className="traffic-value">42 GB</span>
+                            <div className="traffic-total-chip traffic-total-chip--down">
+                                <span className="traffic-total-icon">⬇</span>
+                                <div>
+                                    <span className="traffic-label">Received</span>
+                                    <span className="traffic-value">42 GB</span>
+                                </div>
                             </div>
-                            <div>
-                                <span className="traffic-label">Total Sent</span>
-                                <span className="traffic-value">26 GB</span>
+                            <div className="traffic-total-chip traffic-total-chip--up">
+                                <span className="traffic-total-icon">⬆</span>
+                                <div>
+                                    <span className="traffic-label">Sent</span>
+                                    <span className="traffic-value">26 GB</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div className="traffic-chart">
-                        <div className="traffic-chart-background" />
-                        <div className="traffic-chart-line" />
+                        <div className="traffic-chart-inner">
+                            <div className="traffic-gridlines">
+                                <span />
+                                <span />
+                                <span />
+                                <span />
+                            </div>
+
+                            <div className="traffic-area traffic-area--down" />
+                            <div className="traffic-area traffic-area--up" />
+                        </div>
+
                         <div className="traffic-chart-footer">
                             <span>00:00</span>
                             <span>06:00</span>
                             <span>12:00</span>
                             <span>18:00</span>
                             <span>24:00</span>
+                        </div>
+
+                        <div className="traffic-legend">
+                            <span className="traffic-dot traffic-dot--down" />
+                            <span className="traffic-legend-label">Download</span>
+                            <span className="traffic-dot traffic-dot--up" />
+                            <span className="traffic-legend-label">Upload</span>
+                        </div>
+                    </div>
+
+                    {/* NEW: detailed RX / TX stats under the chart */}
+                    <div className="traffic-stats-grid">
+                        <div className="traffic-stats-header">
+                            <span />
+                            <span>Current</span>
+                            <span>Avg</span>
+                            <span>Peak</span>
+                        </div>
+
+                        {/* RX (Download) */}
+                        <div className="traffic-stats-row">
+                            <div className="traffic-stats-label traffic-stats-label--down">
+                                <span className="traffic-stats-direction">RX ↓</span>
+                            </div>
+                            <div className="traffic-stats-value">
+                                <span className="traffic-stats-main">3012.36 kbit/s</span>
+                                <span className="traffic-stats-sub">(367.72 KB/s)</span>
+                            </div>
+                            <div className="traffic-stats-value">
+                                <span className="traffic-stats-main">1754.23 kbit/s</span>
+                                <span className="traffic-stats-sub">(214.14 KB/s)</span>
+                            </div>
+                            <div className="traffic-stats-value">
+                                <span className="traffic-stats-main">6270.38 kbit/s</span>
+                                <span className="traffic-stats-sub">(765.43 KB/s)</span>
+                            </div>
+                        </div>
+
+                        {/* TX (Upload) */}
+                        <div className="traffic-stats-row">
+                            <div className="traffic-stats-label traffic-stats-label--up">
+                                <span className="traffic-stats-direction">TX ↑</span>
+                            </div>
+                            <div className="traffic-stats-value">
+                                <span className="traffic-stats-main">31.13 kbit/s</span>
+                                <span className="traffic-stats-sub">(3.80 KB/s)</span>
+                            </div>
+                            <div className="traffic-stats-value">
+                                <span className="traffic-stats-main">21.72 kbit/s</span>
+                                <span className="traffic-stats-sub">(2.65 KB/s)</span>
+                            </div>
+                            <div className="traffic-stats-value">
+                                <span className="traffic-stats-main">87.63 kbit/s</span>
+                                <span className="traffic-stats-sub">(10.70 KB/s)</span>
+                            </div>
                         </div>
                     </div>
                 </section>

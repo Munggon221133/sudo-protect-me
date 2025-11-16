@@ -1,3 +1,5 @@
+/* ============ PAGE WRAPPER ============ */
+
 .dashboard-page {
     min-height: 100vh;
     background: #f5f5f7;
@@ -8,7 +10,7 @@
 .dashboard-main {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 18px 20px 32px;
+    padding: 18px 15px 32px;
 }
 
 /* ============ HEADER ============ */
@@ -58,7 +60,7 @@
     background: #10b981;
 }
 
-/* ============ OVERVIEW CARDS ============ */
+/* ============ OVERVIEW CARDS (TOP ROW) ============ */
 
 .dashboard-overview {
     display: grid;
@@ -101,7 +103,7 @@
     gap: 4px;
 }
 
-/* NEW: first line (label + value) */
+/* first line (label + value) */
 .overview-main {
     display: flex;
     align-items: baseline;
@@ -127,7 +129,7 @@
     color: #6b7280;
 }
 
-/* ============ GRID LAYOUTS ============ */
+/* ============ GRID LAYOUTS FOR MAIN CONTENT ============ */
 
 .dashboard-grid {
     display: grid;
@@ -135,12 +137,14 @@
     margin-bottom: 18px;
 }
 
+/* device info + internet status */
 .dashboard-grid--top {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
+/* connected devices + events */
 .dashboard-grid--middle {
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 /* ============ CARD BASE ============ */
@@ -212,7 +216,7 @@
     font-weight: 600;
 }
 
-/* ============ TABLES ============ */
+/* ============ TABLES (DEVICES & EVENTS) ============ */
 
 .dash-card--table {
     padding-bottom: 10px;
@@ -296,7 +300,7 @@
     background: #f9fafb;
 }
 
-/* Custom slim scrollbar */
+/* slim scrollbar */
 .events-table-wrapper::-webkit-scrollbar {
     width: 6px;
 }
@@ -314,7 +318,7 @@
     background: rgba(107, 114, 128, 0.9);
 }
 
-/* Sticky header inside scroll */
+/* sticky header */
 .simple-table--events thead th {
     position: sticky;
     top: 0;
@@ -323,12 +327,12 @@
     border-bottom: 1px solid #e5e7eb;
 }
 
-/* Darker body text for readability */
 .simple-table--events tbody td {
     color: #111827;
 }
 
-/* Event rows with subtle colored bar on left */
+/* row highlight bar */
+
 .event-row {
     position: relative;
     transition:
@@ -347,7 +351,7 @@
     background: transparent;
 }
 
-/* Risk colors */
+/* risk colors */
 .event-row--high::before {
     background: #ef4444;
 }
@@ -364,7 +368,8 @@
     background: #eef2ff;
 }
 
-/* Risk label pill (right column) */
+/* Risk label pill */
+
 .event-risk-label {
     display: inline-flex;
     align-items: center;
@@ -389,31 +394,8 @@
     background: #eab308;
 }
 
-/* Top / bottom gradient fades to hint scroll */
-.events-fade {
-    position: sticky;
-    left: 0;
-    right: 0;
-    height: 14px;
-    pointer-events: none;
-    z-index: 2;
-}
+/* Legend */
 
-.events-fade--top {
-    top: 0;
-    background: linear-gradient(to bottom,
-            rgba(249, 250, 251, 1),
-            rgba(249, 250, 251, 0));
-}
-
-.events-fade--bottom {
-    bottom: 0;
-    background: linear-gradient(to top,
-            rgba(249, 250, 251, 1),
-            rgba(249, 250, 251, 0));
-}
-
-/* Legend at bottom */
 .events-legend {
     display: flex;
     align-items: center;
@@ -473,87 +455,132 @@
     margin-bottom: 12px;
 }
 
+/* totals on the right */
+
 .traffic-totals {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    gap: 6px;
     align-items: flex-end;
 }
 
+.traffic-total-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #f3f4f6;
+}
+
+.traffic-total-chip>div {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+}
+
+.traffic-total-chip--down {
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.traffic-total-chip--up {
+    background: rgba(16, 185, 129, 0.08);
+}
+
 .traffic-label {
-    display: block;
     font-size: 0.76rem;
     color: #6b7280;
 }
 
 .traffic-value {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: #111827;
     font-weight: 600;
 }
 
-/* Fake chart */
+/* chart container */
 
 .traffic-chart {
-    position: relative;
-    margin-top: 2px;
-    border-radius: 12px;
-    background: #f3f4f6;
-    padding: 10px 10px 8px;
+    margin-top: 8px;
 }
 
-.traffic-chart-background {
-    height: 140px;
-    border-radius: 8px;
-    background: linear-gradient(to top,
-            rgba(59, 130, 246, 0.25),
-            rgba(59, 130, 246, 0.05));
+.traffic-chart-inner {
     position: relative;
+    border-radius: 12px;
+    background: #f3f4f6;
+    padding: 10px;
+    height: 160px;
     overflow: hidden;
 }
 
-/* subtle fake spikes */
-.traffic-chart-background::before {
-    content: "";
+/* vertical grid lines */
+
+.traffic-gridlines {
     position: absolute;
-    inset: 0;
-    background-image: linear-gradient(180deg,
-            rgba(255, 255, 255, 0.9) 0,
-            transparent 35%,
-            transparent 60%,
-            rgba(255, 255, 255, 0.95) 100%);
-    mix-blend-mode: soft-light;
+    inset: 10px 10px 26px 10px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
 }
 
-.traffic-chart-line {
+.traffic-gridlines span {
+    width: 1px;
+    background: rgba(209, 213, 219, 0.8);
+}
+
+/* fake areas */
+
+.traffic-area {
     position: absolute;
     left: 10px;
     right: 10px;
-    top: 22px;
-    bottom: 34px;
+    bottom: 26px;
+    top: 10px;
+    border-radius: 10px;
     pointer-events: none;
-    background-image: linear-gradient(to right,
-            rgba(37, 99, 235, 0.4) 0,
-            rgba(37, 99, 235, 0.8) 30%,
-            rgba(37, 99, 235, 0.5) 55%,
-            rgba(37, 99, 235, 0.7) 75%,
-            rgba(37, 99, 235, 0.3) 100%);
-    clip-path: polygon(0% 60%,
-            10% 45%,
-            20% 55%,
-            30% 30%,
-            40% 50%,
-            50% 40%,
-            60% 55%,
-            70% 35%,
-            80% 50%,
-            90% 42%,
-            100% 60%,
+}
+
+/* Download */
+.traffic-area--down {
+    background: linear-gradient(to top,
+            rgba(59, 130, 246, 0.4),
+            rgba(59, 130, 246, 0.05));
+    clip-path: polygon(0% 70%,
+            10% 55%,
+            20% 60%,
+            30% 35%,
+            40% 45%,
+            50% 30%,
+            60% 40%,
+            70% 28%,
+            80% 38%,
+            90% 32%,
+            100% 50%,
             100% 100%,
             0% 100%);
-    border-radius: 8px;
-    opacity: 0.9;
 }
+
+/* Upload */
+.traffic-area--up {
+    background: linear-gradient(to top,
+            rgba(16, 185, 129, 0.55),
+            rgba(16, 185, 129, 0.05));
+    clip-path: polygon(0% 85%,
+            10% 72%,
+            20% 78%,
+            30% 60%,
+            40% 68%,
+            50% 50%,
+            60% 62%,
+            70% 45%,
+            80% 55%,
+            90% 48%,
+            100% 65%,
+            100% 100%,
+            0% 100%);
+}
+
+/* time labels */
 
 .traffic-chart-footer {
     display: flex;
@@ -563,28 +590,99 @@
     color: #9ca3af;
 }
 
+/* legend */
+
+.traffic-legend {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.traffic-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+}
+
+.traffic-dot--down {
+    background: #3b82f6;
+}
+
+.traffic-dot--up {
+    background: #10b981;
+}
+
+.traffic-legend-label {
+    margin-right: 8px;
+}
+
+/* ===== TRAFFIC – STATS GRID (RX/TX) ===== */
+
+.traffic-stats-grid {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(229, 231, 235, 0.9);
+    font-size: 0.78rem;
+    color: #4b5563;
+    display: grid;
+    row-gap: 4px;
+}
+
+.traffic-stats-header,
+.traffic-stats-row {
+    display: grid;
+    grid-template-columns: 0.9fr 1.2fr 1.2fr 1.2fr;
+    column-gap: 12px;
+    align-items: center;
+}
+
+.traffic-stats-header span {
+    font-weight: 500;
+    color: #9ca3af;
+}
+
+.traffic-stats-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.traffic-stats-label--down .traffic-stats-direction {
+    color: #2563eb;
+}
+
+.traffic-stats-label--up .traffic-stats-direction {
+    color: #10b981;
+}
+
+.traffic-stats-direction {
+    font-size: 0.78rem;
+}
+
+.traffic-stats-value {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.traffic-stats-main {
+    color: #111827;
+    font-weight: 500;
+}
+
+.traffic-stats-sub {
+    color: #9ca3af;
+    font-size: 0.7rem;
+}
+
 /* ============ RESPONSIVE ============ */
 
+/* tablets & small desktops */
 @media (max-width: 960px) {
-    .dashboard-main {
-        padding-inline: 16px;
-    }
-
-    .dashboard-grid--top,
-    .dashboard-grid--middle {
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard-overview {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .traffic-totals {
-        flex-direction: row;
-        gap: 16px;
-        align-items: center;
-    }
-
     .dashboard-header {
         flex-direction: column;
         align-items: flex-start;
@@ -593,11 +691,35 @@
     .dashboard-header-meta {
         justify-content: flex-start;
     }
+
+    .dashboard-overview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-grid--top,
+    .dashboard-grid--middle {
+        grid-template-columns: 1fr;
+    }
+
+    .traffic-totals {
+        gap: 10px;
+        align-items: center;
+    }
 }
 
+/* phones */
 @media (max-width: 640px) {
+    .dashboard-main {
+        padding: 14px 10px 24px;
+    }
+
     .dash-card {
         padding: 12px 14px 12px;
+    }
+
+    .dashboard-overview {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 
     .device-info-grid,
@@ -605,7 +727,25 @@
         grid-template-columns: 1fr;
     }
 
-    .dashboard-overview {
-        grid-template-columns: 1fr 1fr;
+    .events-table-wrapper {
+        max-height: 200px;
+    }
+
+    .traffic-chart-inner {
+        height: 140px;
+    }
+
+    .traffic-stats-header,
+    .traffic-stats-row {
+        grid-template-columns: 1fr 1.1fr 1.1fr 1.1fr;
+        column-gap: 8px;
+    }
+
+    .traffic-stats-main {
+        font-size: 0.75rem;
+    }
+
+    .traffic-stats-sub {
+        font-size: 0.68rem;
     }
 }
