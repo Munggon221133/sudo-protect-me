@@ -62,51 +62,218 @@
     font-weight: 400;
 }
 
-/* ================= MODE CARDS UNDER BANNER ================= */
+/* ================= MODE CARDS ================= */
 
 .home-modes {
-    display: flex;
-    justify-content: center;
-    gap: 28px;
-    padding: 30px 20px 10px;
-    margin-top: 10px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 8px;
 }
 
+/* Header above cards */
+.home-modes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.home-modes-title {
+    font-size: 1.4rem;
+    font-weight: 650;
+    color: #111827;
+    letter-spacing: 0.01em;
+}
+
+.home-modes-subtitle {
+    margin-top: 4px;
+    font-size: 0.92rem;
+    color: #6b7280;
+}
+
+.home-modes-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: #6b7280;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(209, 0, 31, 0.03);
+}
+
+/* Cards layout */
+.mode-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+/* Card base */
 .mode-card {
-    width: 260px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 18px;
+    padding: 16px 18px 13px;
+    background: radial-gradient(circle at top left, #ffffff, #f9fafb);
+    border: 1px solid rgba(229, 231, 235, 0.9);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
     overflow: hidden;
-    transition: 0.25s;
+    transition: transform 0.22s ease, box-shadow 0.22s ease,
+        border-color 0.22s ease, background 0.22s ease;
+}
+
+.mode-card::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle at top right,
+            rgba(209, 0, 31, 0.09),
+            transparent 55%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
 }
 
 .mode-card:hover {
     transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+    border-color: rgba(248, 113, 113, 0.45);
 }
 
-.mode-card img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    border-bottom: 1px solid #e5e7eb;
+.mode-card:hover::before {
+    opacity: 1;
 }
 
-.mode-info {
+/* Card variants (subtle tinted borders / bg) */
+.mode-card--education {
+    background: linear-gradient(135deg, #ffffff, #f3f4ff);
+}
+
+.mode-card--game {
+    background: linear-gradient(135deg, #ffffff, #fef3ff);
+}
+
+.mode-card--normal {
+    background: linear-gradient(135deg, #ffffff, #f5f5f7);
+}
+
+/* Top row content */
+.mode-main {
+    display: grid;
+    flex: 1;
+    grid-template-columns: auto 1fr;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+/* Icon circle */
+.mode-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 12px 14px;
-    font-size: 1rem;
-    font-weight: 500;
+    justify-content: center;
+    background: rgba(209, 0, 31, 0.06);
+    font-size: 1.3rem;
+}
+
+.mode-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* Text area */
+.mode-title h3 {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 600;
     color: #111827;
 }
 
-/* Switch Toggle */
+.mode-text p {
+    margin: 4px 0 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #6b7280;
+}
+
+/* Meta badges */
+.mode-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.8rem;
+}
+
+.mode-badge,
+.mode-tag {
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: rgba(17, 24, 39, 0.03);
+    color: #4b5563;
+}
+
+.mode-badge--primary {
+    border-color: rgba(209, 0, 31, 0.3);
+    background: rgba(209, 0, 31, 0.06);
+    color: #b91c1c;
+}
+
+.mode-badge--soft {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.06);
+    color: #1d4ed8;
+}
+
+.mode-badge--outline {
+    border-color: rgba(148, 163, 184, 0.6);
+    color: #6b7280;
+}
+
+/* Footer status line */
+.mode-footer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(209, 213, 219, 0.8);
+    font-size: 0.78rem;
+    color: #6b7280;
+}
+
+.mode-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+}
+
+.mode-status-dot--on {
+    background: #10b981;
+}
+
+.mode-status-dot--off {
+    background: #9ca3af;
+}
+
+.mode-status-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Switch Toggle (reused / refined) */
 .switch {
     position: relative;
-    width: 44px;
-    height: 22px;
+    width: 46px;
+    height: 24px;
     display: inline-block;
 }
 
@@ -119,44 +286,70 @@
 .slider {
     position: absolute;
     cursor: pointer;
-    background-color: #bdbdbd;
-    border-radius: 30px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: 0.3s;
+    background-color: #d1d5db;
+    border-radius: 999px;
+    inset: 0;
+    transition: background-color 0.25s ease;
 }
 
-.slider:before {
+.slider::before {
     position: absolute;
     content: "";
-    height: 16px;
-    width: 16px;
+    height: 18px;
+    width: 18px;
     left: 3px;
     bottom: 3px;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 50%;
-    transition: 0.3s;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
+    transition: transform 0.25s ease;
 }
 
 input:checked+.slider {
     background-color: #d1001f;
 }
 
-input:checked+.slider:before {
-    transform: translateX(22px);
+input:checked+.slider::before {
+    transform: translateX(20px);
 }
 
-@media (max-width: 768px) {
-    .home-modes {
+/* Mobile / tablet */
+@media (max-width: 960px) {
+    .mode-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-modes-header {
         flex-direction: column;
-        align-items: center;
-        gap: 20px;
+        align-items: flex-start;
     }
 
     .mode-card {
-        width: 92%;
-        max-width: 360px;
+        padding: 14px 14px 12px;
+    }
+
+    .mode-main {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        grid-row-gap: 10px;
+    }
+
+    .mode-main .switch {
+        justify-self: flex-end;
+        align-self: start;
+    }
+}
+
+@media (max-width: 640px) {
+    .home-modes {
+        padding-inline: 16px;
+    }
+
+    .home-modes-title {
+        font-size: 1.2rem;
+    }
+
+    .mode-text p {
+        font-size: 0.86rem;
     }
 }
