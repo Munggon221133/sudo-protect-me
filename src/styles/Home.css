@@ -346,6 +346,48 @@ input:checked+.slider::before {
     color: #6b7280;
 }
 
+.schedule-title-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.schedule-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.schedule-status .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.schedule-status.idle {
+    background: rgba(16, 185, 129, 0.12);
+    color: #065f46;
+}
+
+.schedule-status.idle .status-dot {
+    background: #10b981;
+}
+
+.schedule-status.pending {
+    background: rgba(251, 146, 60, 0.12);
+    color: #c2410c;
+}
+
+.schedule-status.pending .status-dot {
+    background: #fb923c;
+}
+
 /* Rows */
 
 .schedule-rows {

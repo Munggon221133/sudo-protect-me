@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Navbar from "../components/navbar/Navbar"
 import padlock from "../assets/padlock.png"
 import ModeCard from "../components/modecard/ModeCard"
@@ -27,9 +27,13 @@ export default function Home() {
         normal: { start: 0, end: 23 * 3600 + 59 * 60 },          // 00:00–23:59
     })
 
+    const [scheduleStatus, setScheduleStatus] = useState("idle")
+
     const updateRange = (key, which, value) => {
         const MIN_GAP = 60
         const v = Number(value)
+
+        setScheduleStatus("pending")
 
         setSchedule(prev => {
             const { start, end } = prev[key]
@@ -48,6 +52,13 @@ export default function Home() {
             }
         })
     }
+
+    useEffect(() => {
+        if (scheduleStatus === "pending") {
+            const timer = setTimeout(() => setScheduleStatus("idle"), 1500)
+            return () => clearTimeout(timer)
+        }
+    }, [scheduleStatus])
 
     return (
         <div className="home-page">
@@ -131,7 +142,17 @@ export default function Home() {
                     {/* ================= SCHEDULE CARD (FULL WIDTH) ================= */}
                     <div className="schedule-card">
                         <div className="schedule-header">
-                            <h2 className="schedule-title">Schedule Settings</h2>
+                            <div className="schedule-title-group">
+                                <h2 className="schedule-title">Schedule Settings</h2>
+
+                                <div className={`schedule-status ${scheduleStatus}`}>
+                                    <span className="status-dot" />
+                                    <span className="status-text">
+                                        {scheduleStatus === "idle" ? "Setup" : "Setting up..."}
+                                    </span>
+                                </div>
+                            </div>
+
                             <p className="schedule-subtitle">
                                 Set allowed time ranges for each mode (24-hour, HH:MM:SS).
                             </p>
