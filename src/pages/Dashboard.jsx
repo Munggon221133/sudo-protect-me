@@ -338,14 +338,12 @@ export default function Dashboard() {
                         </div>
                         <div className="traffic-totals">
                             <div className="traffic-total-chip traffic-total-chip--down">
-                                <span className="traffic-total-icon">⬇</span>
                                 <div>
                                     <span className="traffic-label">Received</span>
                                     <span className="traffic-value">42 GB</span>
                                 </div>
                             </div>
                             <div className="traffic-total-chip traffic-total-chip--up">
-                                <span className="traffic-total-icon">⬆</span>
                                 <div>
                                     <span className="traffic-label">Sent</span>
                                     <span className="traffic-value">26 GB</span>
