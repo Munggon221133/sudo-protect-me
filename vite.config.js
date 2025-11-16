@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://sudo-protect-me-backend-git-main-munggon221133s-projects.vercel.app?_vercel_share=5QKfO4hFuk5JT9MSVtfWSkjCyChRzChc',
+        target: 'http://localhost:5000',
         changeOrigin: true,
       },
     },
