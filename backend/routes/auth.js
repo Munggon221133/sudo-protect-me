@@ -7,10 +7,12 @@ const router = express.Router();
 // Signup
 router.post("/signup", async (req, res) => {
     try {
-        const { firstName, lastName, email, password, role } = req.body;
+        let { firstName, lastName, email, password, role } = req.body;
 
         if (!firstName || !lastName || !email || !password || !role)
             return res.status(400).json({ message: "All fields are required" });
+
+        email = email.toLowerCase();
 
         const existingUser = await User.findOne({ email });
         if (existingUser)
@@ -30,10 +32,12 @@ router.post("/signup", async (req, res) => {
 // Login
 router.post("/login", async (req, res) => {
     try {
-        const { email, password } = req.body;
+        let { email, password } = req.body;
 
         if (!email || !password)
             return res.status(400).json({ message: "Email and password are required" });
+
+        email = email.toLowerCase();
 
         const user = await User.findOne({ email });
         if (!user)
@@ -60,7 +64,7 @@ router.post("/login", async (req, res) => {
 // Reset Password
 router.post("/reset-password", async (req, res) => {
     try {
-        const { email, password, confirmPassword } = req.body;
+        let { email, password, confirmPassword } = req.body;
 
         if (!email || !password || !confirmPassword) {
             return res.status(400).json({ message: "All fields are required" });
@@ -73,6 +77,8 @@ router.post("/reset-password", async (req, res) => {
         if (password !== confirmPassword) {
             return res.status(400).json({ message: "Passwords do not match" });
         }
+
+        email = email.trim().toLowerCase();
 
         const user = await User.findOne({ email });
         if (!user) {
