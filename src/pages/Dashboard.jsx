@@ -195,7 +195,9 @@ export default function Dashboard() {
                                 </div>
                                 <div className="info-row">
                                     <span className="info-label">Subnet Mask</span>
-                                    <span className="info-value">255.255.254.0</span>
+                                    <span className="info-value">255.255.255.255
+                                        
+                                    </span>
                                 </div>
                                 <div className="info-row">
                                     <span className="info-label">MAC Address</span>
@@ -206,7 +208,7 @@ export default function Dashboard() {
                             <div className="info-column">
                                 <div className="info-row">
                                     <span className="info-label">IP Address</span>
-                                    <span className="info-value">192.168.0.1</span>
+                                    <span className="info-value">192.168.1.1</span>
                                 </div>
                                 <div className="info-row">
                                     <span className="info-label">Primary DNS</span>
@@ -214,7 +216,7 @@ export default function Dashboard() {
                                 </div>
                                 <div className="info-row">
                                     <span className="info-label">Secondary DNS</span>
-                                    <span className="info-value">8.8.4.4</span>
+                                    <span className="info-value">0.0.0.0</span>
                                 </div>
                             </div>
                         </div>
