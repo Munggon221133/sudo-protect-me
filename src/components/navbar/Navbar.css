@@ -1,6 +1,6 @@
 .nav-shell {
     position: sticky;
-    top: 0;
+    top: 20px;
     z-index: 100;
     background: linear-gradient(to right, #ffffff, #f9fafb);
     border-bottom: 1px solid rgba(148, 163, 184, 0.18);
