@@ -39,6 +39,13 @@ const events = [
     },
 ]
 
+const USAGEDASHBOARD = [
+    { label: "Social Media", percent: 50, key: "social" },
+    { label: "Learning", percent: 20, key: "learning" },
+    { label: "Gaming", percent: 20, key: "gaming" },
+    { label: "Other", percent: 10, key: "other" },
+]
+
 export default function Dashboard() {
     const totalDevices = devices.length
     const onlineDevices = devices.filter(d => d.status === "Online").length
@@ -196,7 +203,7 @@ export default function Dashboard() {
                                 <div className="info-row">
                                     <span className="info-label">Subnet Mask</span>
                                     <span className="info-value">255.255.255.255
-                                        
+
                                     </span>
                                 </div>
                                 <div className="info-row">
@@ -427,6 +434,69 @@ export default function Dashboard() {
                             <div className="traffic-stats-value">
                                 <span className="traffic-stats-main">87.63 kbit/s</span>
                                 <span className="traffic-stats-sub">(10.70 KB/s)</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="dash-card usage-card">
+                    <div className="usage-header">
+                        <h2>Usage Static</h2>
+                        <span className="usage-period">Last 7 days</span>
+                    </div>
+
+                    <div className="usage-layout">
+                        {/* Pie */}
+                        <div className="usage-chart-wrapper">
+                            <div className="usage-pie">
+                                <div className="usage-slice usage-slice--social" />
+                                <div className="usage-slice usage-slice--learning" />
+                                <div className="usage-slice usage-slice--gaming" />
+                                <div className="usage-slice usage-slice--other" />
+                                <div className="usage-pie-inner" />
+                            </div>
+                        </div>
+
+                        {/* Legend */}
+                        <div className="usage-legend">
+                            {USAGEDASHBOARD.map((u) => (
+                                <div key={u.key} className="usage-row">
+                                    <span
+                                        className={
+                                            "usage-dot usage-dot--" + u.key
+                                        }
+                                    />
+                                    <span className="usage-label">{u.label}</span>
+                                    <span className="usage-bar">
+                                        <span
+                                            className={
+                                                "usage-bar-fill usage-bar-fill--" + u.key
+                                            }
+                                            style={{ width: `${u.percent}%` }}
+                                        />
+                                    </span>
+                                    <span className="usage-percent">
+                                        {u.percent}%
+                                    </span>
+                                </div>
+                            ))}
+
+                            <div className="usage-summary">
+                                <div>
+                                    <span className="usage-summary-label">
+                                        Screen time
+                                    </span>
+                                    <span className="usage-summary-value">
+                                        3h 45m / day
+                                    </span>
+                                </div>
+                                <div>
+                                    <span className="usage-summary-label">
+                                        Most active
+                                    </span>
+                                    <span className="usage-summary-value">
+                                        18:00 – 21:00
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
