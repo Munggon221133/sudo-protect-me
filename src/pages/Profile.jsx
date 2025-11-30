@@ -4,72 +4,171 @@ import Navbar from "../components/navbar/Navbar"
 import "../styles/Profile.css"
 
 const QUICK_STATS = [
-    { label: "Daily Screen Time", value: "3h 45m", hint: "Avg last 7 days" },
-    { label: "Sites Blocked", value: "18", hint: "Today" },
-    { label: "Most Active Time", value: "18:00 – 21:00", hint: "Evening" },
-    { label: "Devices Linked", value: "2", hint: "iPhone • iPad" },
+    { label: "Daily Screen Time", value: "5h 20m", hint: "Avg last 7 days" },
+    { label: "YouTube Time", value: "3h 05m", hint: "Game streams + music" },
+    { label: "Flagged Clips", value: "12", hint: "Strong language / violence" },
+    { label: "Devices Linked", value: "iPad-Kid • SmartTV", hint: "Living room" },
 ]
 
 const USAGE = [
-    { label: "Social Media", percent: 50, key: "social" },
-    { label: "Learning", percent: 30, key: "learning" },
-    { label: "Gaming", percent: 20, key: "gaming" },
+    { label: "Social / Video", percent: 70, key: "social" },   // YouTube, TikTok, etc.
+    { label: "Learning", percent: 15, key: "learning" },       // School / edu content
+    { label: "Gaming", percent: 15, key: "gaming" },           // Game streams & game sites
 ]
 
-const FILTERS = ["All", "New", "Returning", "Mobile", "Desktop"]
+// You can keep the FILTERS the same
+const FILTERS = ["All", "New", "Returning", "Mobile", "tablet"]
 
 const VISITS = [
+    // --- 11/29 ---
     {
-        timestamp: "8/9/2025, 5:14:05 PM",
-        page: "/pricing",
-        location: "London, Germany",
-        device: "Tablet",
+        timestamp: "11/29/2025, 8:20:11 PM",
+        page: "youtube.com/@GameBeatMelody/live",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
         deviceType: "tablet",
-        ip: "214.80.74.248",
-        duration: "10m 10s",
+        ip: "192.168.0.12",
+        duration: "41m 12s",
         type: "Returning",
     },
     {
-        timestamp: "8/9/2025, 4:46:18 PM",
-        page: "/about",
-        location: "New York, Canada",
-        device: "Desktop",
-        deviceType: "desktop",
-        ip: "97.9.220.20",
-        duration: "4m 21s",
-        type: "Returning",
-    },
-    {
-        timestamp: "8/8/2025, 7:58:33 PM",
-        page: "/about",
-        location: "Tokyo, Australia",
-        device: "Mobile",
-        deviceType: "mobile",
-        ip: "38.157.102.114",
-        duration: "8m 35s",
-        type: "Returning",
-    },
-    {
-        timestamp: "8/8/2025, 12:48:19 PM",
-        page: "/features",
-        location: "Paris, France",
-        device: "Tablet",
+        timestamp: "11/29/2025, 7:32:44 PM",
+        page: "youtube.com/watch?v=GBM-new-song-cover",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
         deviceType: "tablet",
-        ip: "163.182.51.25",
-        duration: "8m 4s",
+        ip: "192.168.0.12",
+        duration: "12m 02s",
+        type: "Returning",
+    },
+
+    // --- 11/28 ---
+    {
+        timestamp: "11/28/2025, 7:58:10 PM",
+        page: "youtube.com/@GameBeatMelody",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "6m 15s",
+        type: "Returning",
+    },
+    {
+        timestamp: "11/28/2025, 7:48:10 PM",
+        page: "youtube.com/@GameBeatMelody/live",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "32m 11s",
+        type: "Returning",
+    },
+    {
+        timestamp: "11/28/2025, 7:12:03 PM",
+        page: "youtube.com/watch?v=GBM-OP-song01",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "14m 45s",
+        type: "Returning",
+    },
+    {
+        timestamp: "11/28/2025, 6:45:22 PM",
+        page: "youtube.com/@GameBeatMelody",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.15",
+        duration: "25m 02s",
+        type: "Returning",
+    },
+    {
+        timestamp: "11/28/2025, 5:20:44 PM",
+        page: "youtube.com/watch?v=GBM-rage-moments",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "11m 57s",
+        type: "Returning",
+    },
+    {
+        timestamp: "11/28/2025, 5:12:19 PM",
+        page: "youtube.com/results?search_query=gamebeatmelody+song",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "4m 08s",
+        type: "Returning",
+    },
+
+    // --- 11/27 ---
+    {
+        timestamp: "11/27/2025, 8:12:01 PM",
+        page: "youtube.com/watch?v=GBM-karaoke01",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.15",
+        duration: "19m 05s",
+        type: "Returning",
+    },
+    {
+        timestamp: "11/27/2025, 7:41:29 PM",
+        page: "youtube.com/watch?v=GBM-funny-clips",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "9m 21s",
+        type: "Returning",
+    },
+    {
+        timestamp: "11/27/2025, 7:10:17 PM",
+        page: "youtube.com/@GameBeatMelody",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "8m 44s",
+        type: "Returning",
+    },
+
+    // --- 11/26 ---
+    {
+        timestamp: "11/26/2025, 8:22:39 PM",
+        page: "youtube.com/watch?v=GBM-18plus-warning",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "7m 18s",
+        type: "Returning",
+    },
+    {
+        timestamp: "11/26/2025, 7:55:02 PM",
+        page: "karaoke.com/pop-song-favorite",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "15m 40s",
+        type: "Returning",
+    },
+    {
+        timestamp: "11/26/2025, 7:40:19 PM",
+        page: "youtube.com/@GameBeatMelody",
+        location: "Bangkok, Thailand",
+        device: "iPad-Kid",
+        deviceType: "tablet",
+        ip: "192.168.0.12",
+        duration: "5m 55s",
         type: "New",
     },
-    {
-        timestamp: "8/8/2025, 11:42:37 AM",
-        page: "/about",
-        location: "Berlin, Japan",
-        device: "Tablet",
-        deviceType: "tablet",
-        ip: "53.235.233.160",
-        duration: "6m 3s",
-        type: "Returning",
-    },
-]
+];
+
 
 export default function Profile() {
     const [user, setUserState] = useState(null)

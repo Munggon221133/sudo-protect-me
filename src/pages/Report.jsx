@@ -3,8 +3,8 @@ import Navbar from "../components/navbar/Navbar"
 import "../styles/Report.css"
 
 const seedBlacklist = [
-    { date: "01-08-25", url: "ads-tracker.example.com" },
-    { date: "31-07-25", url: "adult-site.xxx" },
+    { date: "01-08-25", url: "https://www.888.net/login.php?id=123" },
+    { date: "31-07-25", url: "https://adult-site.xxx.com" },
     { date: "30-07-25", url: "gamble-now.example" },
 ]
 
