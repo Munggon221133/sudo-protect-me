@@ -169,9 +169,17 @@ const VISITS = [
     },
 ];
 
+const getDomain = (urlOrPath) => {
+    if (!urlOrPath) return "";
+    // Remove protocol if ever present
+    const clean = urlOrPath.replace(/^https?:\/\//, "");
+    // Take everything before the first "/"
+    return clean.split("/")[0];
+};
 
 export default function Profile() {
     const [user, setUserState] = useState(null)
+    const [blindMode, setBlindMode] = useState(false)
     const activeFilter = "All"
 
     useEffect(() => {
@@ -363,14 +371,16 @@ export default function Profile() {
                 <section className="profile-card profile-card--table">
                     <div className="profile-table-header">
                         <h2>Recent Visits (50)</h2>
-                        <div className="profile-table-tools">
-                            <div className="blind-toggle">
-                                <span>Blind Mode</span>
-                                <label className="switch">
-                                    <input type="checkbox" />
-                                    <span className="slider" />
-                                </label>
-                            </div>
+                        <div className="blind-toggle">
+                            <span>Blind Mode</span>
+                            <label className="switch">
+                                <input
+                                    type="checkbox"
+                                    checked={blindMode}
+                                    onChange={(e) => setBlindMode(e.target.checked)}
+                                />
+                                <span className="slider" />
+                            </label>
                         </div>
                     </div>
 
@@ -391,13 +401,16 @@ export default function Profile() {
                                 {VISITS.map((v, idx) => (
                                     <tr key={idx}>
                                         <td>{v.timestamp}</td>
-                                        <td className="profile-page-path">{v.page}</td>
+
+                                        <td className="profile-page-path">
+                                            {blindMode ? getDomain(v.page) : v.page}
+                                        </td>
+
                                         <td>{v.location}</td>
                                         <td>
                                             <span
                                                 className={
-                                                    "device-pill device-pill--" +
-                                                    v.deviceType
+                                                    "device-pill device-pill--" + v.deviceType
                                                 }
                                             >
                                                 {v.device}
